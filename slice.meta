@@ -5,5 +5,4 @@
  (author "Mario Domenech Goulart")
  (license "BSD")
  (category data)
- (test-depends test)
- (files "slice.scm" "slice.setup" "slice.html"))
+ (test-depends test))
