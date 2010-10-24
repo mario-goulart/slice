@@ -1,7 +1,6 @@
 #!/usr/bin/csi -script
 
-(use test)
-(load "../slice.scm")
+(use test slice)
 
 ;;;
 ;;; Strings
@@ -110,3 +109,5 @@
 (test "c" (slice s 0 1))
 
 (test-end "Slice")
+
+(unless (zero? (test-failure-count)) (exit 1))
