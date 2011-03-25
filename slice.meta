@@ -6,4 +6,4 @@
  (license "BSD")
  (category data)
  (test-depends test)
- (files "slice.scm" "slice.setup" "slice.html"))
+ (files "slice.scm" "slice.setup" "slice.meta" "tests/run.scm"))
