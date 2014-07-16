@@ -11,4 +11,4 @@
                      "slice.import.so"
                      "slice-utf8.so"
                      "slice-utf8.import.so")
-                   '((version "1.0")))
+                   '((version "1.1")))
