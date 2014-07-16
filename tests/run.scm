@@ -7,6 +7,8 @@
 ;;;
 (test-begin "Slice")
 
+(test-begin "Strings")
+
 (define s "1234567")
 
 (display "s = ")
@@ -29,10 +31,13 @@
 (test "" (slice s -4 -10))
 (test "123" (slice s -10 -4))
 
+(test-end "Strings")
 
 ;;;
 ;;; Lists
 ;;;
+(test-begin "Lists")
+
 (define l '(1 2 3 4 5 6 7))
 
 (newline)
@@ -58,9 +63,13 @@
 (test '() (slice l -4 -10))
 (test '(1 2 3) (slice l -10 -4))
 
+(test-end "Lists")
+
 ;;;
 ;;; Vectors
 ;;;
+(test-begin "Vectors")
+
 (define v '#(1 2 3 4 5 6 7))
 
 (newline)
@@ -86,9 +95,13 @@
 (test '#() (slice v -4 -10))
 (test '#(1 2 3) (slice v -10 -4))
 
+(test-end "Vectors")
+
 ;;;
 ;;; Custom object
 ;;;
+(test-begin "Custom object")
+
 (define-record custom-string text)
 
 (define s (make-custom-string "custom string"))
@@ -107,6 +120,8 @@
 (test "" (slice s 0 0))
 (test "" (slice s 1 0))
 (test "c" (slice s 0 1))
+
+(test-end "Custom object")
 
 (test-end "Slice")
 
