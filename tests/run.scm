@@ -1,6 +1,6 @@
 #!/usr/bin/csi -script
 
-(use test slice)
+(use test slice (rename slice-utf8 (slice slice-utf8)))
 
 ;;;
 ;;; Strings
@@ -122,6 +122,36 @@
 (test "c" (slice s 0 1))
 
 (test-end "Custom object")
+
+;;;
+;;; UTF-8
+;;;
+
+(test-begin "UTF-8 Strings")
+
+(define s "ççããõõ")
+
+(display "s = ")
+(pp s)
+(test "" (slice-utf8 s 0 0))
+(test "" (slice-utf8 s 1 0))
+(test "ç" (slice-utf8 s 0 1))
+(test "" (slice-utf8 s 10 10))
+(test "ççããõõ" (slice-utf8 s 0 10))
+(test "" (slice-utf8 s 10 0))
+
+(test "ççããõõ" (slice-utf8 s 0))
+(test "õ" (slice-utf8 s -1))
+(test "" (slice-utf8 s 10))
+(test "ççããõõ" (slice-utf8 s -10))
+(test "ããõõ" (slice-utf8 s -4))
+
+(test "" (slice-utf8 s -4 -4))
+(test "ãã" (slice-utf8 s -4 -2))
+(test "" (slice-utf8 s -4 -10))
+(test "çç" (slice-utf8 s -10 -4))
+
+(test-end "UTF-8 Strings")
 
 (test-end "Slice")
 
