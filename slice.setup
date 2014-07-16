@@ -1,9 +1,14 @@
 ;;; slice.setup -*- scheme -*-
 
-(compile -s -O3 -d1 -j slice slice.scm)
+(compile -s -O3 -d1 -J slice.scm)
 (compile -s -O3 -d1 slice.import.scm)
 
-(install-extension 'slice
-                   '("slice.so" "slice.import.so")
-                   '((version "1.0")))
+(compile -s -O3 -d1 -J slice-utf8.scm)
+(compile -s -O3 -d1 slice-utf8.import.scm)
 
+(install-extension 'slice
+                   '("slice.so"
+                     "slice.import.so"
+                     "slice-utf8.so"
+                     "slice-utf8.import.so")
+                   '((version "1.0")))

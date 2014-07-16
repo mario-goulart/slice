@@ -5,4 +5,5 @@
  (author "Mario Domenech Goulart")
  (license "BSD")
  (category data)
+ (depends utf8)
  (test-depends test))
