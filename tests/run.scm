@@ -155,4 +155,4 @@
 
 (test-end "Slice")
 
-(unless (zero? (test-failure-count)) (exit 1))
+(test-exit)
