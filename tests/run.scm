@@ -1,5 +1,3 @@
-#!/usr/bin/csi -script
-
 (use test slice (rename slice-utf8 (slice slice-utf8)))
 
 ;;;
