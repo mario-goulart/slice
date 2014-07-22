@@ -20,6 +20,7 @@
 
 (test "1234567" (slice s 0))
 (test "7" (slice s -1))
+(test "123456" (slice s 0 -1))
 (test "" (slice s 10))
 (test "1234567" (slice s -10))
 (test "4567" (slice s -4))
@@ -52,6 +53,7 @@
 
 (test '(1 2 3 4 5 6 7) (slice l 0))
 (test '(7) (slice l -1))
+(test '(1 2 3 4 5 6) (slice l 0 -1))
 (test '() (slice l 10))
 (test '(1 2 3 4 5 6 7) (slice l -10))
 (test '(4 5 6 7) (slice l -4))
@@ -84,6 +86,7 @@
 
 (test '#(1 2 3 4 5 6 7) (slice v 0))
 (test '#(7) (slice v -1))
+(test '#(1 2 3 4 5 6) (slice v 0 -1))
 (test '#() (slice v 10))
 (test '#(1 2 3 4 5 6 7) (slice v -10))
 (test '#(4 5 6 7) (slice v -4))
@@ -140,6 +143,7 @@
 
 (test "ççããõõ" (slice-utf8 s 0))
 (test "õ" (slice-utf8 s -1))
+(test "ççããõ" (slice-utf8 s 0 -1))
 (test "" (slice-utf8 s 10))
 (test "ççããõõ" (slice-utf8 s -10))
 (test "ããõõ" (slice-utf8 s -4))

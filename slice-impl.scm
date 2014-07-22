@@ -31,7 +31,7 @@
                   0
                   (+ len from))
               len))
-       ((and (not from)                 ; [:-1]
+       ((and (or (not from) (zero? from)) ; [:-1] or [0:-1]
              to
              (< to 0))
         (cons 0
