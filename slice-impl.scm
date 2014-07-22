@@ -1,3 +1,5 @@
+(declare (fixnum))
+
 (use (srfi 1 13))
 
 (define slice
