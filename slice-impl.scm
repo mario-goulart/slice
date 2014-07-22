@@ -2,61 +2,24 @@
 
 (define slice
   (let ()
-    (define (positive? n) (> n 0))
-    (define (negative? n) (< n 0))
-    (define (both-positive? n m) (and n m (>= n 0) (>= m 0)))
 
     (define (from/to from to len)
-      (cond
-       ((and from (> from len))         ; [XXX:2]
-        #f)
-       ((and (both-positive? from to)   ; [1:2]
-             from to
-             (> to from)
-             (< to len))
-        (cons from to))
-       ((and (both-positive? from to)   ; [1:XXX]
-             from to
-             (> to from)
-             (>= to len))
-        (cons from len))
-       ((and (both-positive? from to)   ; [2:1]
-             from to
-             (> from to))
-        #f)
-       ((and from                       ; [-1:]
-             (< from 0)
-             (not to))
-        (cons (if (>= (abs from) len)
-                  0
-                  (+ len from))
-              len))
-       ((and (or (not from) (zero? from)) ; [:-1] or [0:-1]
-             to
-             (< to 0))
-        (cons 0
-              (if (>= (abs to) len)
-                  len
-                  (+ len to))))
-       ((and from                       ; [1:]
-             (>= from 0)
-             (not to))
-        (cons from len))
-       ((and from to                    ; [-2:-1]
-             (< from 0)
-             (< to 0)
-             (< to from))
-        #f)
-       ((and from to                    ; [-1:-2]
-             (< from 0)
-             (< to 0))
-        (cons (if (>= (abs from) len)
-                  0
-                  (+ len from))
-              (if (>= (abs to) len)
-                  len
-                  (+ len to))))
-       (else #f)))
+      (let* ((from (cond ((not from) 0)
+                         ((> from len) len)
+                         ((< from 0) (- len (if (> (abs from) len)
+                                                len
+                                                (- from))))
+                         ((> from 0) from)
+                         (else 0)))
+             (to (cond ((not to) len)
+                       ((> to len) len)
+                       ((< to 0) (- len (if (> (abs to) len)
+                                            len
+                                            (- to))))
+                       (else to))))
+        (cond ((<= to from) #f)
+              (else (cons from to)))))
+
 
     (define (generic-slicer obj from to ruler empty obj-slicer)
       (let* ((len (ruler obj))

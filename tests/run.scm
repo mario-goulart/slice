@@ -29,6 +29,7 @@
 (test "45" (slice s -4 -2))
 (test "" (slice s -4 -10))
 (test "123" (slice s -10 -4))
+(test "345" (slice s 2 -2))
 
 (test-end "Strings")
 
@@ -62,6 +63,7 @@
 (test '(4 5) (slice l -4 -2))
 (test '() (slice l -4 -10))
 (test '(1 2 3) (slice l -10 -4))
+(test '(3 4 5) (slice l 2 -2))
 
 (test-end "Lists")
 
@@ -95,6 +97,7 @@
 (test '#(4 5) (slice v -4 -2))
 (test '#() (slice v -4 -10))
 (test '#(1 2 3) (slice v -10 -4))
+(test '#(3 4 5) (slice v 2 -2))
 
 (test-end "Vectors")
 
@@ -152,6 +155,7 @@
 (test "ãã" (slice-utf8 s -4 -2))
 (test "" (slice-utf8 s -4 -10))
 (test "çç" (slice-utf8 s -10 -4))
+(test "ãã" (slice-utf8 s 2 -2))
 
 (test-end "UTF-8 Strings")
 
