@@ -1,0 +1,12 @@
+;;; slice.egg -*- scheme -*-
+
+((synopsis "A slicer procedure for lists, strings and vectors")
+ (author "Mario Domenech Goulart")
+ (license "BSD")
+ (category data)
+ (dependencies srfi-1 utf8)
+ (test-dependencies test utf8)
+ (component-options
+  (csc-options "-O3" "-d1"))
+ (components (extension slice)
+             (extension slice-utf8)))

@@ -1,4 +1,12 @@
-(use test slice (rename slice-utf8 (slice slice-utf8)))
+(cond-expand
+  (chicken-4
+   (use extras)
+   (use test slice (rename slice-utf8 (slice slice-utf8))))
+  (chicken-5
+   (import (chicken pretty-print))
+   (import test slice (rename slice-utf8 (slice slice-utf8))))
+  (else
+   (error "Unsupported CHICKEN version.")))
 
 ;;;
 ;;; Strings
