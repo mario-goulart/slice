@@ -1,0 +1,12 @@
+slice-utf8.import.scm
+slice-utf8.import.so
+slice-utf8.link
+slice-utf8.so
+slice-utf8.static.o
+slice.build.sh
+slice.import.scm
+slice.import.so
+slice.install.sh
+slice.link
+slice.so
+slice.static.o
